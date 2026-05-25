@@ -9,20 +9,11 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 :root{
-  --bg:#F7F6F2;
-  --surface:#FFFFFF;
-  --border:#E4E2DC;
-  --text:#1A1915;
-  --muted:#888780;
-  --accent:#1A1915;
+  --bg:#F7F6F2;--surface:#FFFFFF;--border:#E4E2DC;--text:#1A1915;--muted:#888780;
   --green-bg:#EAF3DE;--green-text:#27500A;--green-border:#97C459;
   --amber-bg:#FAEEDA;--amber-text:#633806;--amber-border:#EF9F27;
   --red-bg:#FCEBEB;--red-text:#791F1F;--red-border:#F09595;
-  --blue-bg:#E6F1FB;--blue-text:#0C447C;--blue-border:#85B7EB;
-  --purple-bg:#EEEDFE;--purple-text:#3C3489;--purple-border:#AFA9EC;
-  --teal-bg:#E1F5EE;--teal-text:#085041;--teal-border:#5DCAA5;
-  --coral-bg:#FAECE7;--coral-text:#712B13;--coral-border:#F0997B;
-  --pink-bg:#FBEAF0;--pink-text:#72243E;--pink-border:#ED93B1;
+  --blue-bg:#E6F1FB;--blue-text:#0C447C;
   --radius:10px;--radius-sm:6px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
@@ -33,14 +24,17 @@ header{display:flex;align-items:flex-start;justify-content:space-between;margin-
 .logo-icon{width:40px;height:40px;background:var(--text);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px}
 .logo-text h1{font-size:18px;font-weight:600;letter-spacing:-.3px}
 .logo-text p{font-size:12px;color:var(--muted);margin-top:1px}
+.sync-badge{display:inline-flex;align-items:center;gap:5px;font-size:11px;padding:3px 10px;border-radius:20px;background:var(--green-bg);color:var(--green-text);font-weight:600;margin-top:4px}
+.sync-dot{width:6px;height:6px;border-radius:50%;background:var(--green-text);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
 .header-actions{display:flex;gap:8px;flex-wrap:wrap}
 .btn{font-family:'DM Sans',sans-serif;font-size:13px;padding:8px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);cursor:pointer;background:var(--surface);color:var(--text);display:inline-flex;align-items:center;gap:6px;transition:all .15s;font-weight:500}
-.btn:hover{background:var(--bg);border-color:#ccc}
+.btn:hover{background:var(--bg)}
 .btn-dark{background:var(--text);color:#fff;border-color:var(--text)}
-.btn-dark:hover{opacity:.85;background:var(--text)}
+.btn-dark:hover{opacity:.85}
 .summary{display:grid;grid-template-columns:repeat(auto-fit,minmax(100px,1fr));gap:10px;margin-bottom:1.5rem}
 .sum-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px 16px}
-.sum-num{font-size:26px;font-weight:600;letter-spacing:-1px;color:var(--text)}
+.sum-num{font-size:26px;font-weight:600;letter-spacing:-1px}
 .sum-lbl{font-size:11px;color:var(--muted);margin-top:2px;font-weight:500;text-transform:uppercase;letter-spacing:.4px}
 .sum-num.green{color:#27500A}.sum-num.amber{color:#633806}.sum-num.red{color:#791F1F}.sum-num.muted{color:var(--muted)}
 .tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
@@ -49,13 +43,11 @@ header{display:flex;align-items:flex-start;justify-content:space-between;margin-
 .tab.active{background:var(--text);color:#fff;border-color:var(--text)}
 .filters{display:flex;gap:8px;margin-bottom:1.25rem;flex-wrap:wrap;align-items:center}
 .filters select,.filters input{font-family:'DM Sans',sans-serif;font-size:13px;padding:7px 11px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);color:var(--text);outline:none}
-.filters select:focus,.filters input:focus{border-color:#999}
 .card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);margin-bottom:10px;overflow:hidden;transition:border-color .15s}
 .card:hover{border-color:#ccc}
 .card-header{padding:14px 16px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;gap:10px}
 .card-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
 .card-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.card-info{}
 .card-name{font-size:14px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .card-meta{font-size:12px;color:var(--muted);margin-top:2px}
 .badge{font-size:11px;padding:2px 9px;border-radius:20px;font-weight:500;display:inline-block}
@@ -88,7 +80,7 @@ header{display:flex;align-items:flex-start;justify-content:space-between;margin-
 .card-actions{display:flex;gap:8px;justify-content:flex-end;border-top:1px solid var(--border);padding-top:12px}
 .empty{text-align:center;padding:3rem;color:var(--muted)}
 .empty i{font-size:40px;display:block;margin-bottom:12px;opacity:.4}
-.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;align-items:center;justify-content:center;backdrop-filter:blur(2px)}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:100;align-items:center;justify-content:center}
 .modal-bg.open{display:flex}
 .modal{background:var(--surface);border-radius:var(--radius);padding:1.5rem;width:min(480px,94vw);max-height:92vh;overflow-y:auto;border:1px solid var(--border)}
 .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:1.25rem}
@@ -98,10 +90,11 @@ header{display:flex;align-items:flex-start;justify-content:space-between;margin-
 .form-input{width:100%;font-size:13px;padding:9px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface);color:var(--text);font-family:'DM Sans',sans-serif;outline:none}
 .form-input:focus{border-color:#999}
 .palette-row{display:flex;gap:8px;flex-wrap:wrap}
-.pdot{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s;outline:none}
+.pdot{width:24px;height:24px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all .15s}
 .pdot.sel{transform:scale(1.2);border-color:var(--text)!important}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--text);color:#fff;padding:9px 20px;border-radius:20px;font-size:13px;font-weight:500;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;font-family:'DM Sans',sans-serif}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--text);color:#fff;padding:9px 20px;border-radius:20px;font-size:13px;font-weight:500;opacity:0;transition:opacity .3s;pointer-events:none;z-index:999;font-family:'DM Sans',sans-serif;white-space:nowrap}
 .toast.show{opacity:1}
+.loading{text-align:center;padding:3rem;color:var(--muted);font-size:14px}
 footer{text-align:center;margin-top:2.5rem;font-size:12px;color:var(--muted)}
 </style>
 </head>
@@ -112,7 +105,7 @@ footer{text-align:center;margin-top:2.5rem;font-size:12px;color:var(--muted)}
       <div class="logo-icon"><i class="ti ti-receipt-tax"></i></div>
       <div class="logo-text">
         <h1>Conferência de Impostos</h1>
-        <p id="subDate">Carregando...</p>
+        <div class="sync-badge"><div class="sync-dot"></div><span id="syncStatus">Conectando...</span></div>
       </div>
     </div>
     <div class="header-actions">
@@ -133,7 +126,7 @@ footer{text-align:center;margin-top:2.5rem;font-size:12px;color:var(--muted)}
     </select>
     <input id="fSearch" placeholder="Buscar imposto..." oninput="render()" style="width:160px">
   </div>
-  <div id="main"></div>
+  <div id="main"><div class="loading"><i class="ti ti-loader" style="font-size:32px;display:block;margin-bottom:10px;animation:spin 1s linear infinite"></i>Conectando ao banco de dados...</div></div>
 
   <div class="modal-bg" id="modal">
     <div class="modal">
@@ -146,10 +139,24 @@ footer{text-align:center;margin-top:2.5rem;font-size:12px;color:var(--muted)}
   </div>
 
   <div class="toast" id="toast"></div>
-  <footer>Painel de Conferência de Impostos — dados salvos localmente neste navegador</footer>
+  <footer>Conferência de Impostos — sincronizado em tempo real</footer>
 </div>
 
-<script>
+<style>
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+</style>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getDatabase, ref, onValue, set, update, remove } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js";
+
+const firebaseConfig = {
+  databaseURL: "https://conferencia-impostos-default-rtdb.firebaseio.com"
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+
 const LEADERS = ['Gabi','Guilherme','Fernanda','Lauanny','Jessica Driely','Gabryel'];
 const PALETTE = [
   {bg:'#EEEDFE',text:'#3C3489',dot:'#7F77DD'},
@@ -163,32 +170,57 @@ const PALETTE = [
 ];
 const AVCOLORS=[['#EEEDFE','#3C3489'],['#E1F5EE','#085041'],['#E6F1FB','#0C447C'],['#FAECE7','#712B13'],['#FAEEDA','#633806'],['#FBEAF0','#72243E']];
 
-let S = {obligations:[], leaders:[...LEADERS], activeTab:'all', openCards:{}};
-const KEY = 'tax_panel_v1';
+const DEFAULT_OBLIGATIONS = [
+  {id:'ob1',name:'DARF PIS.COFINS – COMPETÊNCIA 04.2026',due:'2026-05-25',paletteIdx:0,ls:{},obs:{},ts:{}},
+  {id:'ob2',name:'ENVIO 2º COTA IRPJ.CSLL – 1º TRIMESTRE 2026',due:'2026-05-29',paletteIdx:1,ls:{},obs:{},ts:{}},
+  {id:'ob3',name:'ICMS MG – COMPETÊNCIA 05.2026',due:'2026-06-08',paletteIdx:2,ls:{},obs:{},ts:{}},
+  {id:'ob4',name:'ICMS BA – COMPETÊNCIA 05.2026',due:'2026-06-09',paletteIdx:3,ls:{},obs:{},ts:{}},
+  {id:'ob5',name:'ICMS TO – COMPETÊNCIA 05.2026',due:'2026-06-09',paletteIdx:4,ls:{},obs:{},ts:{}},
+  {id:'ob6',name:'SIMPLES NACIONAL – COMPETÊNCIA 05.2026',due:'2026-06-22',paletteIdx:5,ls:{},obs:{},ts:{}},
+];
 
-function load(){
-  try{const d=localStorage.getItem(KEY);if(d) S={...S,...JSON.parse(d)};}catch(e){}
-  if(!S.leaders||!S.leaders.length) S.leaders=[...LEADERS];
-  render(); updateDate();
+let obligations = [];
+let openCards = {};
+let activeTab = 'all';
+let initialized = false;
+
+const dbRef = ref(db, 'painel');
+
+onValue(dbRef, (snapshot) => {
+  const data = snapshot.val();
+  if (!data || !data.obligations || data.obligations.length === 0) {
+    if (!initialized) {
+      initialized = true;
+      obligations = DEFAULT_OBLIGATIONS;
+      saveAll();
+    }
+  } else {
+    initialized = true;
+    obligations = data.obligations || [];
+    openCards = data.openCards || {};
+    document.getElementById('syncStatus').textContent = 'Sincronizado em tempo real';
+  }
+  render();
+}, (error) => {
+  document.getElementById('syncStatus').textContent = 'Erro de conexão';
+  document.getElementById('syncStatus').style.color = '#791F1F';
+});
+
+function saveAll() {
+  set(dbRef, { obligations, openCards });
 }
 
-function save(){
-  try{localStorage.setItem(KEY,JSON.stringify(S));}catch(e){}
-}
-
-function updateDate(){
-  const el=document.getElementById('subDate');
-  if(el) el.textContent='Atualizado em '+new Date().toLocaleString('pt-BR');
+function saveOb(ob) {
+  set(ref(db, 'painel/obligations/' + obligations.indexOf(ob)), ob);
 }
 
 function initials(n){return n.split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase();}
 function avStyle(i){const c=AVCOLORS[i%AVCOLORS.length];return `background:${c[0]};color:${c[1]}`;}
 
 function status(ob){
-  const ls=ob.ls||{};const l=S.leaders;
-  if(!l.length)return 'pendente';
-  if(l.every(x=>ls[x]==='aprovado'))return 'aprovado';
-  if(l.some(x=>ls[x]==='conferido'||ls[x]==='aprovado'))return 'parcial';
+  const ls=ob.ls||{};
+  if(LEADERS.every(x=>ls[x]==='aprovado'))return 'aprovado';
+  if(LEADERS.some(x=>ls[x]==='conferido'||ls[x]==='aprovado'))return 'parcial';
   return 'pendente';
 }
 
@@ -197,14 +229,14 @@ function isOverdue(ob){
 }
 
 function progress(ob){
-  const ls=ob.ls||{};const total=S.leaders.length*2;
+  const ls=ob.ls||{};const total=LEADERS.length*2;
   if(!total)return 0;
-  let sc=0;S.leaders.forEach(l=>{if(ls[l]==='conferido')sc+=1;if(ls[l]==='aprovado')sc+=2;});
+  let sc=0;LEADERS.forEach(l=>{if(ls[l]==='conferido')sc+=1;if(ls[l]==='aprovado')sc+=2;});
   return Math.round(sc/total*100);
 }
 
 function getMonths(){
-  const ms=new Set();S.obligations.forEach(o=>ms.add(o.due.substring(0,7)));return[...ms].sort();
+  const ms=new Set();obligations.forEach(o=>ms.add(o.due.substring(0,7)));return[...ms].sort();
 }
 
 function fmtDate(d){const[y,m,day]=d.split('-');return `${day}/${m}/${y}`;}
@@ -213,11 +245,10 @@ function fmtMonth(ym){const[y,m]=ym.split('-');return new Date(y,m-1,1).toLocale
 function render(){renderSum();renderTabs();renderCards();}
 
 function renderSum(){
-  const obs=S.obligations;
-  const total=obs.length,done=obs.filter(o=>status(o)==='aprovado').length;
-  const part=obs.filter(o=>status(o)==='parcial').length;
-  const pend=obs.filter(o=>status(o)==='pendente').length;
-  const ovd=obs.filter(o=>isOverdue(o)).length;
+  const total=obligations.length,done=obligations.filter(o=>status(o)==='aprovado').length;
+  const part=obligations.filter(o=>status(o)==='parcial').length;
+  const pend=obligations.filter(o=>status(o)==='pendente').length;
+  const ovd=obligations.filter(o=>isOverdue(o)).length;
   document.getElementById('sumGrid').innerHTML=`
     <div class="sum-card"><div class="sum-num">${total}</div><div class="sum-lbl">Total</div></div>
     <div class="sum-card"><div class="sum-num green">${done}</div><div class="sum-lbl">Aprovados</div></div>
@@ -230,23 +261,23 @@ function renderSum(){
 function renderTabs(){
   const months=getMonths();
   const tabs=[{id:'all',label:'Todos'},...months.map(m=>({id:m,label:fmtMonth(m)}))];
-  if(!tabs.find(t=>t.id===S.activeTab)) S.activeTab='all';
-  document.getElementById('tabsWrap').innerHTML=tabs.map(t=>`<button class="tab${S.activeTab===t.id?' active':''}" onclick="setTab('${t.id}')">${t.label}</button>`).join('');
+  if(!tabs.find(t=>t.id===activeTab)) activeTab='all';
+  document.getElementById('tabsWrap').innerHTML=tabs.map(t=>`<button class="tab${activeTab===t.id?' active':''}" onclick="window.setTab('${t.id}')">${t.label}</button>`).join('');
 }
 
-function setTab(id){S.activeTab=id;render();}
+window.setTab = function(id){activeTab=id;render();}
 
 function renderCards(){
   const sf=document.getElementById('fStatus')?.value||'';
   const sq=(document.getElementById('fSearch')?.value||'').toLowerCase();
-  let obs=[...S.obligations];
-  if(S.activeTab!=='all') obs=obs.filter(o=>o.due.startsWith(S.activeTab));
+  let obs=[...obligations];
+  if(activeTab!=='all') obs=obs.filter(o=>o.due.startsWith(activeTab));
   if(sf==='vencido') obs=obs.filter(o=>isOverdue(o));
   else if(sf) obs=obs.filter(o=>status(o)===sf);
   if(sq) obs=obs.filter(o=>o.name.toLowerCase().includes(sq));
   obs.sort((a,b)=>a.due.localeCompare(b.due));
   if(!obs.length){
-    document.getElementById('main').innerHTML=`<div class="empty"><i class="ti ti-clipboard-list"></i>Nenhum lançamento cadastrado.<br><br><button class="btn btn-dark" onclick="openAdd()" style="margin-top:12px"><i class="ti ti-plus"></i> Adicionar primeiro lançamento</button></div>`;
+    document.getElementById('main').innerHTML=`<div class="empty"><i class="ti ti-clipboard-list"></i>Nenhum lançamento cadastrado.<br><br><button class="btn btn-dark" onclick="window.openAdd()" style="margin-top:12px"><i class="ti ti-plus"></i> Adicionar lançamento</button></div>`;
     return;
   }
   document.getElementById('main').innerHTML=obs.map(o=>cardHtml(o)).join('');
@@ -254,7 +285,7 @@ function renderCards(){
 
 function cardHtml(ob){
   const st=status(ob);const prog=progress(ob);const ovd=isOverdue(ob);
-  const open=S.openCards[ob.id];
+  const open=openCards[ob.id];
   const pi=ob.paletteIdx??0;const p=PALETTE[pi%PALETTE.length];
   let badge='';
   if(ovd) badge='<span class="badge b-red">Vencido</span>';
@@ -262,8 +293,8 @@ function cardHtml(ob){
   else if(st==='parcial') badge='<span class="badge b-amber">Em andamento</span>';
   else badge='<span class="badge b-gray">Pendente</span>';
   const pc=prog===100?'#27500A':prog>40?'#633806':'#791F1F';
-  const leadersHtml=S.leaders.map((l,li)=>{
-    const lst=ob.ls?.[l]||'pendente';const obsT=ob.obs?.[l]||'';const ts=ob.ts?.[l]||'';
+  const leadersHtml=LEADERS.map((l,li)=>{
+    const lst=ob.ls?.[l]||'pendente';const obsT=(ob.obs?.[l]||'').replace(/"/g,'&quot;');const ts=ob.ts?.[l]||'';
     const isConf=lst==='conferido'||lst==='aprovado';const isAprov=lst==='aprovado';
     return `<div class="lcard">
       <div class="lname">
@@ -273,26 +304,25 @@ function cardHtml(ob){
         ${lst==='conferido'?'<i class="ti ti-eye-check" style="color:#633806;margin-left:auto;font-size:15px"></i>':''}
       </div>
       <div class="steps">
-        <button class="sbtn ${isConf?'s-conf':''} ${lst==='pendente'?'s-next':''}" onclick="setStep('${ob.id}','${l}','conferido')">
+        <button class="sbtn ${isConf?'s-conf':''} ${lst==='pendente'?'s-next':''}" onclick="window.setStep('${ob.id}','${l}','conferido')">
           <i class="ti ti-eye"></i> Conferiu
         </button>
-        <button class="sbtn ${isAprov?'s-aprov':''} ${lst==='conferido'?'s-next':''}" onclick="setStep('${ob.id}','${l}','aprovado')">
+        <button class="sbtn ${isAprov?'s-aprov':''} ${lst==='conferido'?'s-next':''}" onclick="window.setStep('${ob.id}','${l}','aprovado')">
           <i class="ti ti-check"></i> Aprovou
         </button>
-        <button class="sbtn sbtn-reset" onclick="resetStep('${ob.id}','${l}')" title="Resetar">
+        <button class="sbtn sbtn-reset" onclick="window.resetStep('${ob.id}','${l}')" title="Resetar">
           <i class="ti ti-rotate-clockwise-2"></i>
         </button>
       </div>
-      <textarea class="obs-input" rows="2" placeholder="Observação..." onblur="saveObs('${ob.id}','${l}',this.value)">${obsT}</textarea>
+      <textarea class="obs-input" rows="2" placeholder="Observação..." onblur="window.saveObs('${ob.id}','${l}',this.value)">${obsT}</textarea>
       ${ts?`<div class="ts"><i class="ti ti-clock" style="font-size:10px"></i> ${ts}</div>`:''}
     </div>`;
   }).join('');
-
   return `<div class="card" id="c-${ob.id}">
-    <div class="card-header" onclick="toggleCard('${ob.id}')">
+    <div class="card-header" onclick="window.toggleCard('${ob.id}')">
       <div class="card-left">
         <div class="card-dot" style="background:${p.dot}"></div>
-        <div class="card-info">
+        <div>
           <div class="card-name">${ob.name} ${badge}</div>
           <div class="card-meta"><i class="ti ti-calendar" style="font-size:11px"></i> Vencimento: ${fmtDate(ob.due)}</div>
         </div>
@@ -307,44 +337,54 @@ function cardHtml(ob){
       <div class="sec-label">Líderes responsáveis</div>
       <div class="leaders-grid">${leadersHtml}</div>
       <div class="card-actions">
-        <button class="btn" style="color:#791F1F;border-color:#F09595" onclick="delOb('${ob.id}')"><i class="ti ti-trash"></i> Remover</button>
-        <button class="btn" onclick="openEdit('${ob.id}')"><i class="ti ti-edit"></i> Editar</button>
+        <button class="btn" style="color:#791F1F;border-color:#F09595" onclick="window.delOb('${ob.id}')"><i class="ti ti-trash"></i> Remover</button>
+        <button class="btn" onclick="window.openEdit('${ob.id}')"><i class="ti ti-edit"></i> Editar</button>
       </div>
     </div>`:''}
   </div>`;
 }
 
-function toggleCard(id){S.openCards[id]=!S.openCards[id];render();}
+window.toggleCard = function(id){
+  openCards[id]=!openCards[id];
+  set(ref(db,'painel/openCards'),openCards);
+  render();
+}
 
-function setStep(id,l,step){
-  const ob=S.obligations.find(o=>o.id===id);if(!ob)return;
+window.setStep = function(id,l,step){
+  const ob=obligations.find(o=>o.id===id);if(!ob)return;
   if(!ob.ls)ob.ls={};if(!ob.ts)ob.ts={};
   ob.ls[l]=step;
   ob.ts[l]=new Date().toLocaleString('pt-BR')+(step==='aprovado'?' — Aprovado':' — Conferido');
-  save();showToast(`${l}: ${step==='aprovado'?'Aprovado ✓':'Conferido'}`);render();
+  const idx=obligations.indexOf(ob);
+  set(ref(db,`painel/obligations/${idx}`),ob);
+  showToast(`${l}: ${step==='aprovado'?'Aprovado ✓':'Conferido'}`);
 }
 
-function resetStep(id,l){
-  const ob=S.obligations.find(o=>o.id===id);if(!ob)return;
+window.resetStep = function(id,l){
+  const ob=obligations.find(o=>o.id===id);if(!ob)return;
   if(ob.ls)delete ob.ls[l];if(ob.ts)delete ob.ts[l];
-  save();render();
+  const idx=obligations.indexOf(ob);
+  set(ref(db,`painel/obligations/${idx}`),ob);
 }
 
-function saveObs(id,l,val){
-  const ob=S.obligations.find(o=>o.id===id);if(!ob)return;
-  if(!ob.obs)ob.obs={};ob.obs[l]=val;save();
+window.saveObs = function(id,l,val){
+  const ob=obligations.find(o=>o.id===id);if(!ob)return;
+  if(!ob.obs)ob.obs={};ob.obs[l]=val;
+  const idx=obligations.indexOf(ob);
+  set(ref(db,`painel/obligations/${idx}`),ob);
 }
 
-function delOb(id){
+window.delOb = function(id){
   if(!confirm('Remover este lançamento?'))return;
-  S.obligations=S.obligations.filter(o=>o.id!==id);
-  save();render();showToast('Lançamento removido.');
+  obligations=obligations.filter(o=>o.id!==id);
+  set(ref(db,'painel/obligations'),obligations);
+  showToast('Lançamento removido.');
 }
 
 let selP=0;
 
-function openAdd(){
-  selP=S.obligations.length%PALETTE.length;
+window.openAdd = function(){
+  selP=obligations.length%PALETTE.length;
   document.getElementById('modalTitle').textContent='Novo lançamento';
   document.getElementById('modalBody').innerHTML=`
     <div class="form-group">
@@ -357,33 +397,35 @@ function openAdd(){
     </div>
     <div class="form-group">
       <label class="form-label">Cor de identificação</label>
-      <div class="palette-row" id="pp">${PALETTE.map((p,i)=>`<div class="pdot${i===selP?' sel':''}" style="background:${p.dot}" onclick="pickP(${i})" title="Cor ${i+1}"></div>`).join('')}</div>
+      <div class="palette-row">${PALETTE.map((p,i)=>`<div class="pdot${i===selP?' sel':''}" style="background:${p.dot}" onclick="window.pickP(${i})"></div>`).join('')}</div>
     </div>
     <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px">
-      <button class="btn" onclick="closeModal()">Cancelar</button>
-      <button class="btn btn-dark" onclick="addOb()"><i class="ti ti-plus"></i> Adicionar</button>
+      <button class="btn" onclick="window.closeModal()">Cancelar</button>
+      <button class="btn btn-dark" onclick="window.addOb()"><i class="ti ti-plus"></i> Adicionar</button>
     </div>
   `;
   document.getElementById('fDue').value=new Date().toISOString().split('T')[0];
   openModal();
 }
 
-function pickP(i){
+window.pickP = function(i){
   selP=i;
   document.querySelectorAll('.pdot').forEach((d,idx)=>d.classList.toggle('sel',idx===i));
 }
 
-function addOb(){
+window.addOb = function(){
   const name=(document.getElementById('fName').value||'').trim();
   const due=document.getElementById('fDue').value;
   if(!name){showToast('Informe o nome do imposto');return;}
   if(!due){showToast('Informe a data de vencimento');return;}
-  S.obligations.push({id:Date.now().toString(),name,due,paletteIdx:selP,ls:{},obs:{},ts:{}});
-  save();closeModal();render();showToast(`"${name}" adicionado!`);
+  const newOb={id:'ob'+Date.now(),name,due,paletteIdx:selP,ls:{},obs:{},ts:{}};
+  obligations.push(newOb);
+  set(ref(db,'painel/obligations'),obligations);
+  closeModal();showToast(`"${name}" adicionado!`);
 }
 
-function openEdit(id){
-  const ob=S.obligations.find(o=>o.id===id);if(!ob)return;
+window.openEdit = function(id){
+  const ob=obligations.find(o=>o.id===id);if(!ob)return;
   selP=ob.paletteIdx??0;
   document.getElementById('modalTitle').textContent='Editar lançamento';
   document.getElementById('modalBody').innerHTML=`
@@ -397,30 +439,32 @@ function openEdit(id){
     </div>
     <div class="form-group">
       <label class="form-label">Cor de identificação</label>
-      <div class="palette-row" id="pp">${PALETTE.map((p,i)=>`<div class="pdot${i===selP?' sel':''}" style="background:${p.dot}" onclick="pickP(${i})"></div>`).join('')}</div>
+      <div class="palette-row">${PALETTE.map((p,i)=>`<div class="pdot${i===selP?' sel':''}" style="background:${p.dot}" onclick="window.pickP(${i})"></div>`).join('')}</div>
     </div>
     <div style="display:flex;justify-content:flex-end;gap:8px;margin-top:18px">
-      <button class="btn" onclick="closeModal()">Cancelar</button>
-      <button class="btn btn-dark" onclick="saveEdit('${id}')"><i class="ti ti-check"></i> Salvar</button>
+      <button class="btn" onclick="window.closeModal()">Cancelar</button>
+      <button class="btn btn-dark" onclick="window.saveEdit('${id}')"><i class="ti ti-check"></i> Salvar</button>
     </div>
   `;
   openModal();
 }
 
-function saveEdit(id){
-  const ob=S.obligations.find(o=>o.id===id);if(!ob)return;
+window.saveEdit = function(id){
+  const ob=obligations.find(o=>o.id===id);if(!ob)return;
   const name=(document.getElementById('eName').value||'').trim();
   const due=document.getElementById('eDue').value;
   if(!name||!due){showToast('Preencha todos os campos');return;}
   ob.name=name;ob.due=due;ob.paletteIdx=selP;
-  save();closeModal();render();showToast('Salvo com sucesso!');
+  const idx=obligations.indexOf(ob);
+  set(ref(db,`painel/obligations/${idx}`),ob);
+  closeModal();showToast('Salvo com sucesso!');
 }
 
-function doExport(){
-  if(!S.obligations.length){showToast('Nenhum dado para exportar');return;}
-  const rows=[['Imposto','Vencimento','Status','Progresso',...S.leaders]];
-  S.obligations.forEach(ob=>{
-    rows.push([ob.name,ob.due,status(ob),progress(ob)+'%',...S.leaders.map(l=>ob.ls?.[l]||'pendente')]);
+window.doExport = function(){
+  if(!obligations.length){showToast('Nenhum dado para exportar');return;}
+  const rows=[['Imposto','Vencimento','Status','Progresso',...LEADERS]];
+  obligations.forEach(ob=>{
+    rows.push([ob.name,ob.due,status(ob),progress(ob)+'%',...LEADERS.map(l=>ob.ls?.[l]||'pendente')]);
   });
   const bom='\uFEFF';
   const csv=bom+rows.map(r=>r.map(c=>`"${c}"`).join(';')).join('\n');
@@ -430,15 +474,13 @@ function doExport(){
 }
 
 function openModal(){document.getElementById('modal').classList.add('open');}
-function closeModal(){document.getElementById('modal').classList.remove('open');}
-document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)closeModal();});
+window.closeModal = function(){document.getElementById('modal').classList.remove('open');}
+document.getElementById('modal').addEventListener('click',function(e){if(e.target===this)window.closeModal();});
 
 function showToast(msg){
   const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');
   setTimeout(()=>t.classList.remove('show'),2400);
 }
-
-load();
 </script>
 </body>
 </html>
